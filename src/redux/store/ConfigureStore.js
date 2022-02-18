@@ -13,10 +13,7 @@ const middleWares = [thunk];
 const enhancer = applyMiddleware(...middleWares);
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store = createStore(
-  persistedReducer,
-  enhancer
-)
+const store = createStore( persistedReducer, enhancer )
 
 let persistor = persistStore(store);
 

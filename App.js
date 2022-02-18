@@ -1,23 +1,28 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import Router from './src/Router';
+import Router from './src/configurations/router';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { Persistor, Store } from './src/redux/store/Store';
+import { persistor, store } from "./src/redux/store/ConfigureStore";
+import SplashScreen from 'react-native-splash-screen'
 
-class App extends Component {
-  state = {};
-  render() {
+const App = () => {
+
+    useEffect(()=>{
+        setTimeout(()=>{
+            SplashScreen.hide();
+        },2000)
+    },[])
+
     return (
-      <Provider store={Store}>
-        <PersistGate loading={null} persistor={Persistor}>
-          <NavigationContainer>
-            <Router />
-          </NavigationContainer>
-        </PersistGate>
-      </Provider>
-    );
-  }
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                <NavigationContainer>
+                    <Router />
+                </NavigationContainer>
+            </PersistGate>
+        </Provider>
+    )
 }
 
 export default App;
