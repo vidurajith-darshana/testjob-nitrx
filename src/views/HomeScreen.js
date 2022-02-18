@@ -5,7 +5,7 @@ import {
     View,
     Image,
     FlatList,
-    TouchableOpacity
+    TouchableOpacity, Linking
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -63,7 +63,7 @@ const HomeScreen = () => {
                             {item.creator_details.name}
                         </Text>
                         <Text style={{fontFamily: "SF-UI-Text-Regular", fontSize: 11}}>
-                            {moment(item.created_at).format('MMMM Do YYYY, h:mm:ss a')}
+                            {moment.unix(item.created_at).format('MMMM Do YYYY, h:mm:ss a')}
                         </Text>
                     </View>
                 </View>
@@ -92,7 +92,7 @@ const HomeScreen = () => {
                             <View style={{marginRight: '5%',flexDirection: 'row'}}>
                                 {
                                     [1,2,3,4,5].map((stars,index)=>(
-                                        <Icon key={index} name="star-o" size={20} color="gray" />
+                                        <Icon key={index} name={parseInt(item.rated_value) > 0 && parseInt(item.rated_value) <= index ? "star" : "star-o"} size={20} color="gray" />
                                     ))
                                 }
                                 <Text style={{fontSize: 15,marginLeft: '5%'}}>{item.rated_value ? item.rated_value : 0}/5</Text>
@@ -105,9 +105,15 @@ const HomeScreen = () => {
                         {item.description}
                     </Text>
 
-                    <Text style={styles.description}>
-                        {item.website}
-                    </Text>
+                    {
+                        item.website ?
+                            <Text
+                                style={[styles.description,{color: 'blue'}]}
+                                onPress={()=>Linking.openURL(item.website)}
+                            >
+                                {item.website}
+                            </Text> : null
+                    }
                 </View>
             </View>
         </View>
