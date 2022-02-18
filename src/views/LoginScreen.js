@@ -30,10 +30,12 @@ const LoginScreen = () =>{
     }
 
     useEffect(()=>{
-        const token = AsyncStorage.getItem('token');
-        if (token) {
-            navigation.navigate('home');
+        async function getToken() {
+            if (await AsyncStorage.getItem('token')) {
+                navigation.navigate('home');
+            }
         }
+        getToken();
     })
 
     // use effect for check the login status

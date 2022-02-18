@@ -4,6 +4,12 @@ export const signInActionTypes = {
     FAILED_ACTION: 'SIGN_IN_FAILED_ACTION'
 }
 
+export const postsActionTypes = {
+    REQUEST_ACTION: 'POSTS_REQUEST_ACTION',
+    SUCCESS_ACTION: 'POSTS_SUCCESS_ACTION',
+    FAILED_ACTION: 'POSTS_FAILED_ACTION'
+}
+
 export const resetActionTypes = {
     RESET_AUTH_ACTION: 'RESET_AUTH_ACTION'
 }
