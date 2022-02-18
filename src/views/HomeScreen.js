@@ -463,7 +463,7 @@ const HomeScreen = () => {
             </ScrollView>
 
             <TouchableOpacity onPress={() => {
-                navigation.navigate('AddPost')
+                navigation.navigate('createPost')
             }}>
 
                 <Image
