@@ -3,3 +3,7 @@ export const signInActionTypes = {
     SUCCESS_ACTION: 'SIGN_IN_SUCCESS_ACTION',
     FAILED_ACTION: 'SIGN_IN_FAILED_ACTION'
 }
+
+export const resetActionTypes = {
+    RESET_AUTH_ACTION: 'RESET_AUTH_ACTION'
+}

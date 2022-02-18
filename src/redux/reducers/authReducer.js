@@ -1,6 +1,4 @@
-import {
-  signInActionTypes
-} from "../actionTypes/actionTypes";
+import {resetActionTypes, signInActionTypes} from "../actionTypes/actionTypes";
 
 const initialState = {
 
@@ -11,6 +9,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+
     case signInActionTypes.REQUEST_ACTION:
       return {
         ...state,
@@ -19,13 +18,10 @@ export default (state = initialState, action) => {
         signInError: null
       }
     case signInActionTypes.SUCCESS_ACTION:
-
-      const result = action.value.result;
-
       return {
         ...state,
         signInLoading: false,
-        signInSuccess: action.value,
+        signInSuccess: action.value.result,
         signInError: null
       }
     case signInActionTypes.FAILED_ACTION:
@@ -33,7 +29,15 @@ export default (state = initialState, action) => {
         ...state,
         signInLoading: false,
         signInSuccess: null,
-        signInError: action.value
+        signInError: action.value.result
+      }
+
+    case resetActionTypes.RESET_AUTH_ACTION:
+      return {
+        ...state,
+        signInLoading: false,
+        signInSuccess: null,
+        signInError: null
       }
 
     default:

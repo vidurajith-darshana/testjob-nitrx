@@ -11,10 +11,10 @@ const hide = {headerShown: false};
 export default class Router extends Component {
   render() {
     return (
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={LoginScreen} options={hide} />
-        <Stack.Screen name="Home" component={HomeScreen} options={hide} />
-        <Stack.Screen name="AddPost" component={CreatePostScreen} options={hide} />
+      <Stack.Navigator initialRouteName="login">
+        <Stack.Screen name="login" component={LoginScreen} options={hide} />
+        <Stack.Screen name="home" component={HomeScreen} options={hide} />
+        <Stack.Screen name="createPost" component={CreatePostScreen} options={hide} />
       </Stack.Navigator>
     );
   }
