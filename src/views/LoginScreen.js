@@ -2,11 +2,13 @@ import React  from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
 import Button from '../components/Button';
 import TextInput from '../components/TextInput';
+import Loader from "../components/Loader";
 
 const LoginScreen = () =>{
 
   return (
       <View style={styles.container}>
+
         <Image
             style={{ marginTop: 42, marginBottom: 32 }}
             source={require('../assets/logo3.png')}
@@ -33,6 +35,9 @@ const LoginScreen = () =>{
 
           </View>
         </View>
+
+        <Loader isVisible={false}/>
+
       </View>
   );
 }
